@@ -30,9 +30,14 @@ jobs:
             README.md
 
       - name: Run step if any file(s) in the docs folder change
+        id: check-cond
         if: steps.changed-files-specific.outputs.any_changed == 'true' && ${{ (github.event.review.state != 'approved') }}
         run: |
-          echo "One or more files in the docs folder has changed."
-          echo "List all the files that have changed: ${{ steps.changed-files-specific.outputs.all_changed_files }}"
-          script: |
-                  core.setFailed('These pr must be approved before merge')
+          echo 'true'
+
+      - name: Fail pr if not all condition pass
+        if: ${{ steps.check-cond.output }} == 'true'
+          uses: actions/github-script@v3
+          with:
+            script: |
+              core.setFailed('These pr must be approved before merge')
