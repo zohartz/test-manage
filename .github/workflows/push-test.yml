@@ -37,7 +37,7 @@ jobs:
 
       - name: Fail pr if not all condition pass
         if: ${{ steps.check-cond.output }} == 'true'
-          uses: actions/github-script@v3
-          with:
-            script: |
-              core.setFailed('These pr must be approved before merge')
+        uses: actions/github-script@v3
+        with:
+          script: |
+            core.setFailed('These pr must be approved before merge')
