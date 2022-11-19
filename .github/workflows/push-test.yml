@@ -4,16 +4,20 @@ on:
      - master
 
 jobs:
-  build:
-  runs-on: ubuntu-latest
-             - name: Verify Changed files
-             uses: tj-actions/verify-changed-files@v12
-             id: verify-changed-files
-             with:
-               files: |
-                 README.md
+  steps:
+    - name: Verify Changed files
+      uses: tj-actions/verify-changed-files@v12
+      id: verify-changed-files
+      with:
+        files: |
+          *.txt
+          test_directory
+          action.yml
+          **/*.py
+          **/*.jpeg
+          !*.sql
 
-             - name: Run step only when any of the above files change.
-               if: steps.verify-changed-files.outputs.files_changed == 'true'
-               run: |
-                 echo "Changed files: ${{ steps.verify-changed-files.outputs.changed_files }}"
+    - name: Run step only when any of the above files change.
+      if: steps.verify-changed-files.outputs.files_changed == 'true'
+      run: |
+        echo "Changed files: ${{ steps.verify-changed-files.outputs.changed_files }}"
