@@ -47,7 +47,7 @@ jobs:
 
       - name: just contains
         id : contains-list
-        if: contains(steps.protected_services.outputs.content , steps.changed-files-specific.outputs.any_changed)
+        if: contains(${{ steps.protected_services.outputs.content }} , ${{ steps.changed-files-specific.outputs.any_changed}})
         run: |
           echo 'found it'
 
