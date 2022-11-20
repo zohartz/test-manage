@@ -26,8 +26,7 @@ jobs:
         id: changed-files-specific
         uses: tj-actions/changed-files@v34
         with:
-          files: |
-            README.md
+          path: ./protected_services.txt
 
       - name: Run step if any file(s) in the docs folder change
         id: check-cond

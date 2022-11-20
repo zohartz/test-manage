@@ -1,3 +1,3 @@
 # test-manage !!!
 
-zohar test 1
+zohar test 2
