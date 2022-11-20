@@ -21,7 +21,7 @@ jobs:
         with:
           fetch-depth: 0  # OR "2" -> To retrieve the preceding commit.
 
-      # Example 2
+
       - name: Get changed files in the docs folder
         id: changed-files-specific
         uses: tj-actions/changed-files@v34
@@ -34,6 +34,16 @@ jobs:
         if: steps.changed-files-specific.outputs.any_changed == 'true' && ${{ (github.event.review.state != 'approved') }}
         run: |
           echo 'true'
+
+      - name: Read protected_services
+        id: protected_services
+        uses: juliangruber/read-file-action@v1
+        with:
+          path: ./protected_services.txt
+
+      - name: Echo protected_services
+        run: echo "${{ steps.protected_services.outputs.content }}"
+
 
       - name: Fail pr if not all condition pass
         if: ${{ steps.check-cond.output }} == 'true'
