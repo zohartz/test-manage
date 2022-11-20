@@ -46,8 +46,8 @@ jobs:
         uses: tj-actions/changed-files@v34
 
       - name: just contains
-        id : contains
-        if: steps.changed-files-specific.outputs.any_changed in steps.protected_services.outputs.content
+        id : contains-list
+        if: contains(steps.protected_services.outputs.content , steps.changed-files-specific.outputs.any_changed)
         run: |
           echo 'found it'
 
