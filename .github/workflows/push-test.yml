@@ -48,7 +48,7 @@ jobs:
       - name: just contains
         id : contains-list
         run: |
-          contains(steps.protected_services.outputs.content , steps.changed-files-specific.outputs.any_changed)
+          contains(steps.protected_services.outputs.content , steps.changed-files.outputs.all_changed_files )
           echo 'found it'
 
       - name: Run step if any file(s) in the docs folder change
