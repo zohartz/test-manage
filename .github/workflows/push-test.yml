@@ -44,9 +44,12 @@ jobs:
       - name: Get changed files in the docs folder
         id: changed-files-specific
         uses: tj-actions/changed-files@v34
-        with:
-          path: |
-            path: ${{ github.workspace }}/protected_services.txt
+
+      - name: just contains
+        id : contains
+        if: steps.changed-files-specific.outputs.any_changed in steps.protected_services.outputs.content
+        run: |
+          echo 'found it'
 
       - name: Run step if any file(s) in the docs folder change
         id: check-cond
