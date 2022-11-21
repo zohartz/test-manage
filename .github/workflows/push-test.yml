@@ -39,6 +39,9 @@ jobs:
         run: |
           for file in ${{ steps.changed-files.outputs.all_changed_files }}; do
             echo "$file was changed"
+            if [[ $file in steps.protected_services.outputs.content]]; then
+               echo "$file in  protected services"
+             fi
           done
 
       - name: Get changed files in the docs folder
