@@ -28,7 +28,8 @@ jobs:
           path: ./protected_services.json
 
       - name: Echo protected_services
-        run: echo "${{ steps.protected_services.outputs.content.protected_files }}"
+        run: echo "${{ steps.protected_services.outputs.content }}"
+             echo "${{fromJson(steps.protected_services.outputs.content).protected_files}}"
 
       # Example 1
       - name: Get changed files
@@ -39,7 +40,7 @@ jobs:
         run: |
           for file in ${{ steps.changed-files.outputs.all_changed_files }}; do
             echo "$file was changed"
-            if [[ $file in ${{ steps.protected_services.outputs.content.protected_files }}]]; then
+            if [[ $file in ${{fromJson(steps.protected_services.outputs.content).protected_files}}]]; then
                echo "$file in  protected services"
              fi
           done
