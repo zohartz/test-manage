@@ -22,7 +22,7 @@ jobs:
           fetch-depth: 0  # OR "2" -> To retrieve the preceding commit.
 
       - name: Test approver
-        run: echo "Pull Request ${{ github.event.pull_request.number }} was approved by ${{ toJson(github.event.review)}}"
+        run: echo "Pull Request ${{ github.event.pull_request.number }} was approved by ${{ toJson(github.event.reviews)}}"
 
       #        run: echo "Pull Request ${{ github.event.pull_request.number }} was approved by ${{ github.event.review.user.login }}"
 
