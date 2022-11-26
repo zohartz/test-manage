@@ -28,7 +28,7 @@ jobs:
           path: ./protected_services.json
 
       - name: Echo protected_services
-        echo "Pull Request ${{ github.event.pull_request.number }} was approved by ${{ github.event.review.user.login }}"
+        run:  echo "Pull Request ${{ github.event.pull_request.number }} was approved by ${{ github.event.review.user.login }}"
         #run: echo "${{fromJson(steps.protected_services.outputs.content)}}"
 
       # Example 1
