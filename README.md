@@ -1,8 +1,3 @@
 # test-manage !!!
 
-zohar3 
-
-
-
-
-
+zohar3
