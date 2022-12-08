@@ -1,4 +1,4 @@
 #!/bin/bash
 set -e
-
-ln -s "../../lint.sh" "$(git rev-parse --show-toplevel)/.git/hooks/pre-commit"
+echo 'post push'
+ln -s "../../create_pr.py" "$(git rev-parse --show-toplevel)/.git/hooks/post-push"
