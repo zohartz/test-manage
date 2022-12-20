@@ -17,5 +17,5 @@ jobs:
       - name: get changed files
         id: changed_files
         run: |
-          sleep 300s
+          sleep 20s
           git diff --name-only HEAD~1 > changed_files.txt
