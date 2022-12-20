@@ -12,7 +12,7 @@ jobs:
       - name: Verify Changed files
         uses: tj-actions/verify-changed-files@v32
         id: verify-changed-files
-        with:s
+        with:
           files: |
             README.md
 
