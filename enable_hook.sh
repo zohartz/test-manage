@@ -1,4 +1,4 @@
 #!/bin/bash
 set -e
 echo 'pre push'
-ln -s "../../create_pr.py" "$(git rev-parse --show-toplevel)/.git/hooks/pre-push"
+ln -s "../../gpush.py" "$(git rev-parse --show-toplevel)/.git/hooks/pre-push"
